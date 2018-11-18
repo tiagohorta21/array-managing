@@ -58,6 +58,7 @@ export default class Card extends Component {
           cardIndex={cardIndex}
           getValue={getValue}
           isBeingEdited={isBeingEdited}
+          isLast={isLast}
           label={"Idade"}
           sortCards={sortCards}
           sortIcon={icons.sort}
