@@ -2,6 +2,8 @@
 import React, { Component } from "react";
 // Aphrodite
 import { StyleSheet, css } from "aphrodite/no-important";
+// Helpers
+import { v1 as generateKey } from "uuid";
 // Globals
 import icons from "./../../../../config/icons";
 // Components
@@ -16,16 +18,19 @@ export default class CardContainer extends Component {
   arrayOfData = () => {
     const arrayOfData = [
       {
+        key: generateKey(),
         Nome: "João Coelho",
         Morada: "Avenida Rogério Rosa nº3 4Esq",
         Idade: 32
       },
       {
+        key: generateKey(),
         Nome: "Rita Serra",
         Morada: "Rua Madalena Flor lote 20 1Drto",
         Idade: 26
       },
       {
+        key: generateKey(),
         Nome: "Manuel Gouveia",
         Morada: "Rua João Magalhães nº 28",
         Idade: 40
@@ -36,7 +41,15 @@ export default class CardContainer extends Component {
   handleAddClick = () => {
     const { arrayOfData } = this.state;
     const arrayCopy = JSON.parse(JSON.stringify(arrayOfData));
-    arrayCopy.push({ Nome: "", Morada: "", Idade: "" });
+    arrayCopy.push({ key: generateKey(), Nome: "", Morada: "", Idade: "" });
+    this.setState({
+      arrayOfData: arrayCopy
+    });
+  };
+  handleDeleteClick = cardIndex => {
+    const { arrayOfData } = this.state;
+    const arrayCopy = JSON.parse(JSON.stringify(arrayOfData));
+    arrayCopy.splice(cardIndex, 1);
     this.setState({
       arrayOfData: arrayCopy
     });
@@ -51,10 +64,11 @@ export default class CardContainer extends Component {
             <Card
               addCard={this.handleAddClick}
               cardIndex={index}
+              deleteCard={this.handleDeleteClick}
               icons={icons}
               idade={data.Idade}
               isLast={arrayOfData.length - 1}
-              key={index}
+              key={data.key}
               morada={data.Morada}
               nome={data.Nome}
             />

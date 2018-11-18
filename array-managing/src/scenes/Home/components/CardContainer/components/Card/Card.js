@@ -8,6 +8,7 @@ import InputField from "./components/InputField";
 export const Card = ({
   addCard,
   cardIndex,
+  deleteCard,
   icons,
   idade,
   isLast,
@@ -19,11 +20,13 @@ export const Card = ({
       <InputField label={"Nome"} placeholder={nome} />
       <InputField label={"Morada"} placeholder={morada} />
       <InputField label={"Idade"} placeholder={idade} />
-      {isLast === cardIndex && (
-        <div className={css(styles.iconContainer)}>
+      <div className={css(styles.iconContainer)}>
+        {isLast === cardIndex ? (
           <div className={icons.add} onClick={addCard} />
-        </div>
-      )}
+        ) : (
+          <div className={icons.delete} onClick={deleteCard} />
+        )}
+      </div>
     </div>
   );
 };
