@@ -9,6 +9,7 @@ export const Card = ({
   addCard,
   cardIndex,
   deleteCard,
+  getValue,
   icons,
   idade,
   isLast,
@@ -17,9 +18,24 @@ export const Card = ({
 }) => {
   return (
     <div className={css(styles.cardContainer)}>
-      <InputField label={"Nome"} placeholder={nome} />
-      <InputField label={"Morada"} placeholder={morada} />
-      <InputField label={"Idade"} placeholder={idade} />
+      <InputField
+        cardIndex={cardIndex}
+        getValue={getValue}
+        label={"Nome"}
+        placeholder={nome}
+      />
+      <InputField
+        cardIndex={cardIndex}
+        getValue={getValue}
+        label={"Morada"}
+        placeholder={morada}
+      />
+      <InputField
+        cardIndex={cardIndex}
+        getValue={getValue}
+        label={"Idade"}
+        placeholder={idade}
+      />
       <div className={css(styles.iconContainer)}>
         {isLast === cardIndex ? (
           <div className={icons.add} onClick={addCard} />

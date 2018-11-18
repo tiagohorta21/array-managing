@@ -54,6 +54,26 @@ export default class CardContainer extends Component {
       arrayOfData: arrayCopy
     });
   };
+  handleInputChange = (position, label, value) => {
+    const { arrayOfData } = this.state;
+    const arrayCopy = JSON.parse(JSON.stringify(arrayOfData));
+    if (label === "Nome") {
+      arrayCopy[position].Nome = value;
+      this.setState({
+        arrayOfData: arrayCopy
+      });
+    } else if (label === "Morada") {
+      arrayCopy[position].Morada = value;
+      this.setState({
+        arrayOfData: arrayCopy
+      });
+    } else {
+      arrayCopy[position].Idade = value;
+      this.setState({
+        arrayOfData: arrayCopy
+      });
+    }
+  };
 
   render() {
     const { arrayOfData } = this.state;
@@ -65,6 +85,7 @@ export default class CardContainer extends Component {
               addCard={this.handleAddClick}
               cardIndex={index}
               deleteCard={this.handleDeleteClick}
+              getValue={this.handleInputChange}
               icons={icons}
               idade={data.Idade}
               isLast={arrayOfData.length - 1}
