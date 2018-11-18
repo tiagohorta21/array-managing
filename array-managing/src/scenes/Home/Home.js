@@ -5,7 +5,7 @@ import { StyleSheet, css } from "aphrodite/no-important";
 // Components
 import CardContainer from "./components/CardContainer";
 
-const Home = () => {
+export const Home = () => {
   return (
     <div className={css(styles.mainDiv)}>
       <div className={css(styles.title)}>Array Managing</div>
@@ -13,8 +13,6 @@ const Home = () => {
     </div>
   );
 };
-
-export default Home;
 
 const styles = StyleSheet.create({
   mainDiv: {

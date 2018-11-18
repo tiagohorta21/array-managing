@@ -2,15 +2,20 @@
 import React from "react";
 // Aphrodite
 import { StyleSheet, css } from "aphrodite/no-important";
+// Components
+import Card from "./components/Card";
 
-const CardContainer = () => {
-  return <div className={css(styles.containerDiv)} />;
+export const CardContainer = () => {
+  return (
+    <div className={css(styles.containerDiv)}>
+      <Card />
+    </div>
+  );
 };
-
-export default CardContainer;
 
 const styles = StyleSheet.create({
   containerDiv: {
-    width: 1000
+    padding: 24,
+    width: 500
   }
 });

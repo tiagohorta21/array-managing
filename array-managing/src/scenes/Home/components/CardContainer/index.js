@@ -1,3 +1,3 @@
-import CardContainer from "./CardContainer";
+import { CardContainer } from "./CardContainer";
 
 export default CardContainer;
