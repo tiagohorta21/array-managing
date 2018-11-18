@@ -84,6 +84,14 @@ export default class CardContainer extends Component {
       arrayOfData: arrayCopy
     });
   };
+  handleSortClick = () => {
+    const { arrayOfData } = this.state;
+    const arrayCopy = JSON.parse(JSON.stringify(arrayOfData));
+    arrayCopy.sort((age1, age2) => age1.Idade - age2.Idade);
+    this.setState({
+      arrayOfData: arrayCopy
+    });
+  };
 
   render() {
     const { arrayOfData } = this.state;
@@ -103,6 +111,7 @@ export default class CardContainer extends Component {
               key={data.key}
               morada={data.Morada}
               nome={data.Nome}
+              sortCards={this.handleSortClick}
             />
           );
         })}

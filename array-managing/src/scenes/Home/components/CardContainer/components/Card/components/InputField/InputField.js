@@ -19,6 +19,8 @@ export default class InputField extends Component {
       isBeingEdited,
       isLast,
       label,
+      sortCards,
+      sortIcon,
       type,
       value
     } = this.props;
@@ -36,10 +38,13 @@ export default class InputField extends Component {
         </div>
         <div className={css(styles.iconsContainer)}>
           {cardIndex === 0 && cardIndex !== isLast && (
-            <div
-              className={arrowDown}
-              onClick={() => arrowClick(cardIndex, cardIndex + 1)}
-            />
+            <React.Fragment>
+              <div className={sortIcon} onClick={sortCards} />
+              <div
+                className={arrowDown}
+                onClick={() => arrowClick(cardIndex, cardIndex + 1)}
+              />
+            </React.Fragment>
           )}
           {cardIndex > 0 && cardIndex < isLast && (
             <React.Fragment>
@@ -68,6 +73,8 @@ export default class InputField extends Component {
 const styles = StyleSheet.create({
   iconsContainer: {
     alignItems: "center",
+    alignSelf: "flex-end",
+    cursor: "pointer",
     display: "flex",
     flexDirection: "column"
   },

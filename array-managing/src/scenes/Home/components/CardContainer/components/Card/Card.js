@@ -28,7 +28,8 @@ export default class Card extends Component {
       idade,
       isLast,
       morada,
-      nome
+      nome,
+      sortCards
     } = this.props;
     const { isBeingEdited } = this.state;
     return (
@@ -58,18 +59,26 @@ export default class Card extends Component {
           getValue={getValue}
           isBeingEdited={isBeingEdited}
           label={"Idade"}
+          sortCards={sortCards}
+          sortIcon={icons.sort}
           type="number"
           value={idade}
         />
         <div className={css(styles.iconContainer)}>
-          <div
-            className={isBeingEdited ? icons.save : icons.edit}
-            onClick={this.handleEditClick}
-          />
+          <div className={css(styles.icon)}>
+            <div
+              className={isBeingEdited ? icons.save : icons.edit}
+              onClick={this.handleEditClick}
+            />
+          </div>
           {isLast === cardIndex ? (
-            <div className={icons.add} onClick={addCard} />
+            <div className={css(styles.icon)}>
+              <div className={icons.add} onClick={addCard} />
+            </div>
           ) : (
-            <div className={icons.delete} onClick={deleteCard(cardIndex)} />
+            <div className={css(styles.icon)}>
+              <div className={icons.delete} onClick={deleteCard(cardIndex)} />
+            </div>
           )}
         </div>
       </div>
@@ -84,6 +93,9 @@ const styles = StyleSheet.create({
     height: 150,
     marginBottom: 24,
     padding: 24
+  },
+  icon: {
+    cursor: "pointer"
   },
   iconContainer: {
     display: "flex",
