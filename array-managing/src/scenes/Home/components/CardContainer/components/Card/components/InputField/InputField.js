@@ -4,10 +4,15 @@ import React from "react";
 import { StyleSheet, css } from "aphrodite/no-important";
 
 export const InputField = ({ label, placeholder }) => {
+  console.log(label, placeholder);
   return (
     <div className={css(styles.inputFieldContainer)}>
       <div>{label}</div>
-      <input placeholder={placeholder} className={css(styles.input)} />
+      <input
+        className={css(styles.input)}
+        placeholder={placeholder}
+        readOnly={placeholder === "" ? false : true}
+      />
     </div>
   );
 };
