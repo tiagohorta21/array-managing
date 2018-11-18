@@ -20,6 +20,7 @@ export default class Card extends Component {
   render() {
     const {
       addCard,
+      arrowClick,
       cardIndex,
       deleteCard,
       getValue,
@@ -33,28 +34,32 @@ export default class Card extends Component {
     return (
       <div className={css(styles.cardContainer)}>
         <InputField
+          arrowClick={arrowClick}
+          arrowDown={icons.arrow_down}
+          arrowUp={icons.arrow_up}
           cardIndex={cardIndex}
           getValue={getValue}
           isBeingEdited={isBeingEdited}
+          isLast={isLast}
           label={"Nome"}
-          placeholder={nome}
           type="text"
+          value={nome}
         />
         <InputField
           cardIndex={cardIndex}
           getValue={getValue}
           isBeingEdited={isBeingEdited}
           label={"Morada"}
-          placeholder={morada}
           type="text"
+          value={morada}
         />
         <InputField
           cardIndex={cardIndex}
           getValue={getValue}
           isBeingEdited={isBeingEdited}
           label={"Idade"}
-          placeholder={idade}
           type="number"
+          value={idade}
         />
         <div className={css(styles.iconContainer)}>
           <div

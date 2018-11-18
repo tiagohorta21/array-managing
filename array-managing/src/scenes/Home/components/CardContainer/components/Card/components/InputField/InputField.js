@@ -11,27 +11,73 @@ export default class InputField extends Component {
   };
 
   render() {
-    const { isBeingEdited, label, placeholder, type } = this.props;
+    const {
+      arrowClick,
+      arrowDown,
+      arrowUp,
+      cardIndex,
+      isBeingEdited,
+      isLast,
+      label,
+      type,
+      value
+    } = this.props;
     return (
       <div className={css(styles.inputFieldContainer)}>
-        <div>{label}</div>
-        <input
-          className={css(styles.input)}
-          onChange={this.onChangeValue}
-          placeholder={placeholder}
-          readOnly={!isBeingEdited}
-          type={type}
-        />
+        <div>
+          <div>{label}</div>
+          <input
+            className={css(styles.input)}
+            onChange={this.onChangeValue}
+            readOnly={!isBeingEdited}
+            type={type}
+            value={value}
+          />
+        </div>
+        <div className={css(styles.iconsContainer)}>
+          {cardIndex === 0 && cardIndex !== isLast && (
+            <div
+              className={arrowDown}
+              onClick={() => arrowClick(cardIndex, cardIndex + 1)}
+            />
+          )}
+          {cardIndex > 0 && cardIndex < isLast && (
+            <React.Fragment>
+              <div
+                className={arrowUp}
+                onClick={() => arrowClick(cardIndex, cardIndex - 1)}
+              />
+              <div
+                className={arrowDown}
+                onClick={() => arrowClick(cardIndex, cardIndex + 1)}
+              />
+            </React.Fragment>
+          )}
+          {cardIndex === isLast && cardIndex !== 0 && (
+            <div
+              className={arrowUp}
+              onClick={() => arrowClick(cardIndex, cardIndex - 1)}
+            />
+          )}
+        </div>
       </div>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  iconsContainer: {
+    alignItems: "center",
+    display: "flex",
+    flexDirection: "column"
+  },
   input: {
     width: 400
   },
   inputFieldContainer: {
+    alignItems: "center",
+    display: "flex",
+    justifyContent: "space-between",
     marginBottom: 12
   }
 });

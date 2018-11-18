@@ -74,6 +74,16 @@ export default class CardContainer extends Component {
       });
     }
   };
+  handleArrowClick = (fromIndex, toIndex) => {
+    const { arrayOfData } = this.state;
+    const arrayCopy = JSON.parse(JSON.stringify(arrayOfData));
+    const element = arrayCopy[fromIndex];
+    arrayCopy.splice(fromIndex, 1);
+    arrayCopy.splice(toIndex, 0, element);
+    this.setState({
+      arrayOfData: arrayCopy
+    });
+  };
 
   render() {
     const { arrayOfData } = this.state;
@@ -83,6 +93,7 @@ export default class CardContainer extends Component {
           return (
             <Card
               addCard={this.handleAddClick}
+              arrowClick={this.handleArrowClick}
               cardIndex={index}
               deleteCard={this.handleDeleteClick}
               getValue={this.handleInputChange}
