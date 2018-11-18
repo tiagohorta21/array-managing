@@ -5,12 +5,25 @@ import { StyleSheet, css } from "aphrodite/no-important";
 // Components
 import InputField from "./components/InputField";
 
-export const Card = ({ nome, morada, idade }) => {
+export const Card = ({
+  addCard,
+  cardIndex,
+  icons,
+  idade,
+  isLast,
+  morada,
+  nome
+}) => {
   return (
     <div className={css(styles.cardContainer)}>
       <InputField label={"Nome"} placeholder={nome} />
       <InputField label={"Morada"} placeholder={morada} />
       <InputField label={"Idade"} placeholder={idade} />
+      {isLast === cardIndex && (
+        <div className={css(styles.iconContainer)}>
+          <div className={icons.add} onClick={addCard} />
+        </div>
+      )}
     </div>
   );
 };
@@ -22,5 +35,8 @@ const styles = StyleSheet.create({
     height: 150,
     marginBottom: 24,
     padding: 24
+  },
+  iconContainer: {
+    textAlign: "right"
   }
 });

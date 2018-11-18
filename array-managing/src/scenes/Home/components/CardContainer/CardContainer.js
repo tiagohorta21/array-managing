@@ -2,10 +2,17 @@
 import React, { Component } from "react";
 // Aphrodite
 import { StyleSheet, css } from "aphrodite/no-important";
+// Globals
+import icons from "./../../../../config/icons";
 // Components
 import Card from "./components/Card";
 
 export default class CardContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { arrayOfData: this.arrayOfData() };
+  }
+
   arrayOfData = () => {
     const arrayOfData = [
       {
@@ -26,14 +33,27 @@ export default class CardContainer extends Component {
     ];
     return arrayOfData;
   };
+  handleAddClick = () => {
+    const { arrayOfData } = this.state;
+    const arrayCopy = JSON.parse(JSON.stringify(arrayOfData));
+    arrayCopy.push({ Nome: "", Morada: "", Idade: "" });
+    this.setState({
+      arrayOfData: arrayCopy
+    });
+  };
+
   render() {
-    const arrayOfData = this.arrayOfData();
+    const { arrayOfData } = this.state;
     return (
       <div className={css(styles.containerDiv)}>
         {arrayOfData.map((data, index) => {
           return (
             <Card
+              addCard={this.handleAddClick}
+              cardIndex={index}
+              icons={icons}
               idade={data.Idade}
+              isLast={arrayOfData.length - 1}
               key={index}
               morada={data.Morada}
               nome={data.Nome}
