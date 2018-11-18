@@ -46,7 +46,7 @@ export default class CardContainer extends Component {
       arrayOfData: arrayCopy
     });
   };
-  handleDeleteClick = cardIndex => {
+  handleDeleteClick = cardIndex => () => {
     const { arrayOfData } = this.state;
     const arrayCopy = JSON.parse(JSON.stringify(arrayOfData));
     arrayCopy.splice(cardIndex, 1);

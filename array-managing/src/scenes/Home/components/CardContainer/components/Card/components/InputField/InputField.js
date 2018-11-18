@@ -11,7 +11,7 @@ export default class InputField extends Component {
   };
 
   render() {
-    const { label, placeholder } = this.props;
+    const { isBeingEdited, label, placeholder, type } = this.props;
     return (
       <div className={css(styles.inputFieldContainer)}>
         <div>{label}</div>
@@ -19,7 +19,8 @@ export default class InputField extends Component {
           className={css(styles.input)}
           onChange={this.onChangeValue}
           placeholder={placeholder}
-          // readOnly={placeholder === "" ? false : true}
+          readOnly={!isBeingEdited}
+          type={type}
         />
       </div>
     );
