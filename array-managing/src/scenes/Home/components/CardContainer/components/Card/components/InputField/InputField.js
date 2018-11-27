@@ -1,5 +1,6 @@
 // React
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 // Aphrodite
 import { StyleSheet, css } from "aphrodite/no-important";
 
@@ -69,6 +70,33 @@ export default class InputField extends Component {
     );
   }
 }
+
+InputField.defaultProps = {
+  arrowClick: () => {},
+  arrowDown: "",
+  arrowUp: "",
+  isBeingEdited: false,
+  isLast: 0,
+  label: "",
+  sortCards: () => {},
+  sortIcon: "",
+  type: "text",
+  value: ""
+};
+InputField.propTypes = {
+  arrowClick: PropTypes.func,
+  arrowDown: PropTypes.string,
+  arrowUp: PropTypes.string,
+  cardIndex: PropTypes.number.isRequired,
+  getValue: PropTypes.func.isRequired,
+  isBeingEdited: PropTypes.bool,
+  isLast: PropTypes.number,
+  label: PropTypes.string,
+  sortCards: PropTypes.func,
+  sortIcon: PropTypes.string,
+  type: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+};
 
 const styles = StyleSheet.create({
   iconsContainer: {

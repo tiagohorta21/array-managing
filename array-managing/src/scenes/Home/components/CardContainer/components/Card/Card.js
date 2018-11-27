@@ -1,5 +1,6 @@
 // React
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 // Aphrodite
 import { StyleSheet, css } from "aphrodite/no-important";
 // Components
@@ -86,6 +87,27 @@ export default class Card extends Component {
     );
   }
 }
+
+Card.defaultProps = {
+  icons: {},
+  idade: 0,
+  isLast: 0,
+  morada: "",
+  sortCards: () => {}
+};
+Card.propTypes = {
+  addCard: PropTypes.func.isRequired,
+  arrowClick: PropTypes.func.isRequired,
+  cardIndex: PropTypes.number.isRequired,
+  deleteCard: PropTypes.func.isRequired,
+  getValue: PropTypes.func.isRequired,
+  icons: PropTypes.object,
+  idade: PropTypes.number,
+  isLast: PropTypes.number,
+  morada: PropTypes.string,
+  nome: PropTypes.string,
+  sortCards: PropTypes.func
+};
 
 const styles = StyleSheet.create({
   cardContainer: {
