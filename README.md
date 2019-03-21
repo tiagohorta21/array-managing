@@ -4,11 +4,11 @@ This project is a simple managing platform that allow the user to perform CRUD o
 
 ## Features
 
-* Listing data
-* Switching card positions between
+* Listing cards
 * Add a card
 * Delete a card
 * Edit a card
-* Sorting cards by age
+* Switching cards position up and down
+* Sorting cards by user age
 
 
